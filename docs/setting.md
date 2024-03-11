@@ -226,7 +226,11 @@ package-lock.json
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*.{ts,tsx,js}": ["prettier --write .", "eslint --fix .", "git add ."]
+    "*.{ts,tsx,js,css,scss}": [
+      "prettier --write .",
+      "eslint --fix .",
+      "git add ."
+    ]
   }
 }
 ```

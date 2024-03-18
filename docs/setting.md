@@ -237,7 +237,7 @@ package-lock.json
 
 :::caution
 
-Lưu ý: trước khi cài đặt, đảm bảo rằng dự án của bạn đã được liên kết với một repository trên Github
+Lưu ý: trước khi cài đặt, đảm bảo rằng dự án của bạn đã được liên kết với một repository trên Github hoặc Gitlab
 
 :::
 

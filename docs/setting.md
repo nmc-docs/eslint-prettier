@@ -103,9 +103,7 @@ npm install -D eslint-config-next eslint-plugin-jsx-a11y eslint-plugin-react esl
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/strict",
-    "plugin:@typescript-eslint/strict-type-checked",
     "prettier",
     "plugin:import/recommended",
     "plugin:import/typescript",

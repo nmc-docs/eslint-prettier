@@ -28,7 +28,6 @@ npm install -D eslint-config-next eslint-plugin-jsx-a11y eslint-plugin-react esl
     "next/core-web-vitals",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/strict",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
@@ -101,7 +100,6 @@ npm install -D eslint-config-next eslint-plugin-jsx-a11y eslint-plugin-react esl
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/strict",
     "prettier",
     "plugin:import/recommended",
     "plugin:import/typescript",
@@ -217,8 +215,8 @@ package-lock.json
     "build": "next build",
     "start": "next start",
     "lint": "next lint --fix",
-    "prettier:fix": "prettier --write .",
-    "eslint:fix": "eslint --fix .",
+    "prettier": "prettier --write .",
+    "eslint": "eslint --fix .",
     "prepare": "husky install"
   },
   "lint-staged": {

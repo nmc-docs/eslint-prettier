@@ -91,6 +91,77 @@ npm install -D eslint-config-next eslint-plugin-jsx-a11y eslint-plugin-react esl
 }
 ```
 
+### Cho dự án React Native
+
+```json
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "prettier",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "paths": ["./src"],
+        "extensions": [".ts", ".tsx"]
+      },
+      "typescript": {
+        "project": "./tsconfig.json"
+      }
+    },
+    "import/ignore": ["react-native"]
+  },
+  "env": {
+    "node": true,
+    "browser": true,
+    "es6": true
+  },
+  "plugins": ["simple-import-sort"],
+  "rules": {
+    "prettier/prettier": "error",
+    "no-unused-vars": "off",
+    "no-empty": "off",
+    "no-console": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/consistent-type-exports": "error",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-restricted-imports": [
+      "error",
+      { "patterns": ["../*"] }
+    ],
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [["^(?!\\.)"], ["^\\u0000", "^\\.", "^@src/"]]
+      }
+    ],
+    "simple-import-sort/exports": "error",
+    "import/newline-after-import": "error"
+  }
+}
+```
+
 ### Cho dự án khác
 
 ```json
@@ -180,14 +251,31 @@ npm install -D eslint-config-next eslint-plugin-jsx-a11y eslint-plugin-react esl
 
 ```ignore
 node_modules
+package-lock.json
+
+/* For Nextjs project */
 build
 dist
 .next
 .idea
-package-lock.json
 tailwind.config.ts
 postcss.config.js
 next.config.js
+
+/* For React Native project */
+tailwind.config.js
+babel.config.js
+metro.config.js
+tailwind.js
+jest.config.js
+metro.config.js
+react-native.config.js
+babel.config.js
+__tests__
+.bundle
+.idea
+android
+ios
 ```
 
 ## Tạo file `.prettierignore`
@@ -216,7 +304,6 @@ package-lock.json
     "start": "next start",
     "lint": "next lint --fix",
     "prettier": "prettier --write .",
-    "eslint": "eslint --fix .",
     "prepare": "husky install"
   },
   "lint-staged": {

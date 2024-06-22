@@ -162,42 +162,42 @@ npm install -D eslint-config-next eslint-plugin-jsx-a11y eslint-plugin-react esl
 }
 ```
 
-### Cho dự án khác
+### Cho dự án NestJS (tên file là .eslintrc.js)
 
-```json
-{
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "extends": [
+```js
+module.exports = {
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    project: "tsconfig.json",
+    tsconfigRootDir: __dirname,
+    sourceType: "module",
+  },
+  plugins: ["simple-import-sort"],
+  extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",
     "plugin:import/recommended",
     "plugin:import/typescript",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
   ],
-  "parserOptions": {
-    "ecmaVersion": "latest",
-    "sourceType": "module",
-    "project": "./tsconfig.json"
-  },
-  "settings": {
+  root: true,
+  settings: {
     "import/resolver": {
-      "node": {
-        "paths": ["./src"],
-        "extensions": [".js", ".ts"]
+      node: {
+        paths: ["./src"],
+        extensions: [".js", ".ts"],
       },
-      "typescript": {
-        "project": "./tsconfig.json"
-      }
-    }
+      typescript: {
+        project: "./tsconfig.json",
+      },
+    },
   },
-  "env": {
-    "node": true,
-    "es6": true
+  env: {
+    node: true,
+    jest: true,
   },
-  "plugins": ["simple-import-sort"],
-  "rules": {
+  rules: {
     "prettier/prettier": "error",
     "no-unused-vars": "off",
     "no-empty": "off",
@@ -207,18 +207,18 @@ npm install -D eslint-config-next eslint-plugin-jsx-a11y eslint-plugin-react esl
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-restricted-imports": [
       "error",
-      { "patterns": ["../*"] }
+      { patterns: ["../*"] },
     ],
     "simple-import-sort/imports": [
       "error",
       {
-        "groups": [["^(?!\\.)"], ["^\\u0000", "^\\.", "^src/"]]
-      }
+        groups: [["^(?!\\.)"], ["^\\u0000", "^\\.", "^src/"]],
+      },
     ],
     "simple-import-sort/exports": "error",
-    "import/newline-after-import": "error"
-  }
-}
+    "import/newline-after-import": "error",
+  },
+};
 ```
 
 ## Tạo file `.prettierrc.json`
@@ -247,15 +247,19 @@ npm install -D eslint-config-next eslint-plugin-jsx-a11y eslint-plugin-react esl
 
 ## Tạo file `.eslintignore`
 
-- Không áp dụng các rules của ESLint đối với các file / folder này:
+:::info
+
+- ESLint sẽ áp dụng đối với tất cả các file trong dự án, ngoại trừ các file, folder ta định nghĩa trong file **.eslintignore**
+
+:::
 
 ```ignore
 node_modules
 package-lock.json
-
-/* For Nextjs project */
 build
 dist
+
+/* For Nextjs project */
 .next
 .idea
 tailwind.config.ts
@@ -303,7 +307,8 @@ package-lock.json
     "build": "next build",
     "start": "next start",
     "lint": "next lint --fix",
-    "prettier": "prettier --write .",
+    "format": "prettier --write .",
+    "ts-check": "tsc --noEmit",
     "prepare": "husky install"
   },
   "lint-staged": {

@@ -16,6 +16,16 @@ npm install -D eslint prettier eslint-config-prettier eslint-plugin-prettier @ty
 npm install -D eslint-config-next eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-tailwindcss
 ```
 
+:::note
+
+- Nếu sử dụng NextJS thì **KHÔNG** cần cài các thư viện sau:
+
+```bash
+npm r eslint-plugin-jsx-a11y eslint-plugin-react
+```
+
+:::
+
 ## Tạo file `.eslintrc.json`
 
 ### Cho dự án Nextjs:
@@ -28,10 +38,7 @@ npm install -D eslint-config-next eslint-plugin-jsx-a11y eslint-plugin-react esl
     "next/core-web-vitals",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
-    "plugin:jsx-a11y/recommended",
     "plugin:tailwindcss/recommended",
     "prettier",
     "plugin:import/recommended",
@@ -53,7 +60,7 @@ npm install -D eslint-config-next eslint-plugin-jsx-a11y eslint-plugin-react esl
     "import/resolver": {
       "node": {
         "paths": ["./src"],
-        "extensions": [".js", ".jsx", ".ts", ".tsx", ".css", ".scss"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".css"]
       },
       "typescript": {
         "project": "./tsconfig.json"

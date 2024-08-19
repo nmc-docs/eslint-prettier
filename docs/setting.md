@@ -1,7 +1,6 @@
 ---
 sidebar_position: 2
 ---
-
 # Cài đặt
 
 ## Cài đặt các devDependencies cần thiết:
@@ -10,21 +9,17 @@ sidebar_position: 2
 npm install -D eslint prettier eslint-config-prettier eslint-plugin-prettier @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-import eslint-import-resolver-typescript eslint-plugin-simple-import-sort lint-staged
 ```
 
-- Nếu sử dụng React thì cài thêm các thư viện sau:
+- Nếu sử dụng React Native thì cài thêm các thư viện sau:
 
 ```bash
-npm install -D eslint-config-next eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-tailwindcss
+npm install -D eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks
 ```
 
-:::note
-
-- Nếu sử dụng NextJS thì **KHÔNG** cần cài các thư viện sau:
+- Nếu sử dụng NextJS thì cài thêm các thư viện sau:
 
 ```bash
-npm r eslint-plugin-jsx-a11y eslint-plugin-react
+npm install -D eslint-config-next eslint-plugin-react-hooks eslint-plugin-tailwindcss
 ```
-
-:::
 
 ## Tạo file `.eslintrc.json`
 

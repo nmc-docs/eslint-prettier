@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 ---
+
 # Cài đặt
 
 ## Cài đặt các devDependencies cần thiết:
@@ -55,7 +56,7 @@ npm install -D eslint-config-next eslint-plugin-react-hooks eslint-plugin-tailwi
     "import/resolver": {
       "node": {
         "paths": ["./src"],
-        "extensions": [".js", ".jsx", ".ts", ".tsx", ".css"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".css", ".scss", ".json"]
       },
       "typescript": {
         "project": "./tsconfig.json"
@@ -76,6 +77,7 @@ npm install -D eslint-config-next eslint-plugin-react-hooks eslint-plugin-tailwi
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/consistent-type-exports": "error",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-empty-object-type": "off",
     "@typescript-eslint/no-restricted-imports": [
       "error",
       { "patterns": ["../*"] }
@@ -148,6 +150,7 @@ npm install -D eslint-config-next eslint-plugin-react-hooks eslint-plugin-tailwi
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/consistent-type-exports": "error",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-empty-object-type": "off",
     "@typescript-eslint/no-restricted-imports": [
       "error",
       { "patterns": ["../*"] }
@@ -207,6 +210,7 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/consistent-type-exports": "error",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-empty-object-type": "off",
     "@typescript-eslint/no-restricted-imports": [
       "error",
       { patterns: ["../*"] },
@@ -301,14 +305,11 @@ package-lock.json
 
 ```json
 {
-  "name": "nextjs-learning",
+  "name": "MyProject",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint --fix",
+    "lint": "eslint --fix .",
     "format": "prettier --write .",
     "ts-check": "tsc --noEmit",
     "prepare": "husky install"

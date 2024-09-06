@@ -22,11 +22,22 @@ npm install -D eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-ho
 npm install -D eslint-config-next eslint-plugin-react-hooks eslint-plugin-tailwindcss
 ```
 
+:::note
+
+- Đối với NextJS, đảm bảo thư viện **eslint** có cùng version với **eslint** con bên trong thư viện **eslint-config-next**.
+- Để xem version, gõ:
+
+```bash
+npm ls eslint
+```
+
+:::
+
 ## Tạo file `.eslintrc.json`
 
 ### Cho dự án Nextjs:
 
-```json
+```json title=".eslintrc.json"
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
@@ -97,7 +108,7 @@ npm install -D eslint-config-next eslint-plugin-react-hooks eslint-plugin-tailwi
 
 ### Cho dự án React Native
 
-```json
+```json title=".eslintrc.json"
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
@@ -169,7 +180,7 @@ npm install -D eslint-config-next eslint-plugin-react-hooks eslint-plugin-tailwi
 
 ### Cho dự án NestJS (tên file là .eslintrc.js)
 
-```js
+```js title=".eslintrc.js"
 module.exports = {
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -229,7 +240,7 @@ module.exports = {
 
 ## Tạo file `.prettierrc.json`
 
-```json
+```json title=".prettierrc.json"
 {
   "printWidth": 80,
   "tabWidth": 2,
@@ -259,7 +270,7 @@ module.exports = {
 
 :::
 
-```ignore
+```ignore title=".eslintignore"
 node_modules
 package-lock.json
 build
@@ -292,7 +303,7 @@ ios
 
 - Không định dạng format theo Prettier đối với những file/ folder này:
 
-```ignore
+```ignore title=".prettierignore"
 node_modules
 build
 dist
@@ -303,7 +314,7 @@ package-lock.json
 
 ## Cập nhật script cho lint-staged trong package.json
 
-```json
+```json title="package.json"
 {
   "name": "MyProject",
   "version": "0.1.0",
@@ -340,7 +351,7 @@ npx husky-init && npm install
 
 - Trong file **pre-commit** thuộc thư mục **.husky** được tạo ra:
 
-```text
+```text title=".husky/pre-commit"
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 

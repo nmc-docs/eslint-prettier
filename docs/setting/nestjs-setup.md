@@ -81,8 +81,9 @@ module.exports = {
 ```plaintext title=".eslintignore"
 node_modules
 package-lock.json
-build
+.eslintrc.js
 dist
+build
 ```
 
 ## File `.prettierrc.json`
@@ -132,11 +133,7 @@ package-lock.json
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,css,scss}": [
-      "prettier --write .",
-      "eslint --fix .",
-      "git add ."
-    ]
+    "*.{ts,js}": ["prettier --write .", "eslint --fix .", "git add ."]
   }
 }
 ```

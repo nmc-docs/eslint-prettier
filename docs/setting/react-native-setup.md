@@ -43,7 +43,7 @@ npm install -D eslint prettier eslint-config-prettier eslint-plugin-prettier @ty
     "import/resolver": {
       "node": {
         "paths": ["./src"],
-        "extensions": [".ts", ".tsx"]
+        "extensions": [".ts", ".tsx", ".js"]
       },
       "typescript": {
         "project": "./tsconfig.json"
@@ -93,8 +93,6 @@ npm install -D eslint prettier eslint-config-prettier eslint-plugin-prettier @ty
 ```plaintext title=".eslintignore"
 node_modules
 package-lock.json
-build
-dist
 tailwind.config.js
 babel.config.js
 metro.config.js
@@ -138,8 +136,6 @@ ios
 
 ```plaintext title=".prettierignore"
 node_modules
-build
-dist
 package-lock.json
 ```
 
@@ -157,11 +153,7 @@ package-lock.json
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,css,scss}": [
-      "prettier --write .",
-      "eslint --fix .",
-      "git add ."
-    ]
+    "*.{ts,tsx,js}": ["prettier --write .", "eslint --fix .", "git add ."]
   }
 }
 ```

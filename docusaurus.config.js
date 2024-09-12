@@ -48,7 +48,7 @@ const config = {
         },
         items: [
           {
-            href: "https://github.com/minhchi1509",
+            href: "https://github.com/nmc-docs/eslint-prettier",
             label: "GitHub",
             position: "right",
           },

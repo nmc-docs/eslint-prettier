@@ -92,23 +92,6 @@ npm install -D eslint-plugin-tailwindcss
 }
 ```
 
-## File `.eslintignore`
-
-:::info
-
-- ESLint sẽ áp dụng đối với tất cả các file trong dự án, ngoại trừ các file, folder ta định nghĩa trong file **.eslintignore**
-
-:::
-
-```plaintext title=".eslintignore"
-node_modules
-package-lock.json
-build
-dist
-tailwind.config.ts
-vite.config.ts
-```
-
 ## File `.prettierrc.json`
 
 ```json title=".prettierrc.json"
@@ -142,7 +125,16 @@ dist
 package-lock.json
 ```
 
-## Cập nhật script cho lint-staged trong package.json
+## File `.lintstagedrc.json`
+
+```json title=".lintstagedrc.json"
+{
+  "*": ["prettier --write .", "git add ."],
+  "src/**/*.{ts,tsx}": ["eslint --fix --max-warnings=0", "git add ."]
+}
+```
+
+## Cập nhật script trong package.json
 
 ```json title="package.json"
 {
@@ -150,17 +142,10 @@ package-lock.json
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "lint": "eslint --fix .",
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write .",
     "ts-check": "tsc --noEmit",
     "prepare": "husky install"
-  },
-  "lint-staged": {
-    "*.{ts,tsx,js,css,scss}": [
-      "prettier --write .",
-      "eslint --fix .",
-      "git add ."
-    ]
   }
 }
 ```

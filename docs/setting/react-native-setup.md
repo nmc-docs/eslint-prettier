@@ -7,7 +7,7 @@ sidebar_position: 3
 ## Cài đặt dev dependencies
 
 ```bash
-npm install -D eslint prettier eslint-config-prettier eslint-plugin-prettier @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-import eslint-import-resolver-typescript eslint-plugin-simple-import-sort lint-staged
+npm install -D eslint@8.57.1 prettier eslint-config-prettier eslint-plugin-prettier @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-import eslint-import-resolver-typescript eslint-plugin-simple-import-sort eslint-plugin-unused-imports lint-staged
 ```
 
 ## File `.eslintrc.json`
@@ -56,13 +56,24 @@ npm install -D eslint prettier eslint-config-prettier eslint-plugin-prettier @ty
     "browser": true,
     "es6": true
   },
-  "plugins": ["simple-import-sort"],
+  "plugins": ["simple-import-sort", "unused-imports"],
   "rules": {
     "prettier/prettier": "error",
     "no-unused-vars": "off",
     "no-empty": "off",
     "no-console": "off",
-    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "args": "all",
+        "argsIgnorePattern": "^_",
+        "caughtErrors": "all",
+        "caughtErrorsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
     "@typescript-eslint/consistent-type-exports": "error",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-empty-object-type": "off",
@@ -77,7 +88,8 @@ npm install -D eslint prettier eslint-config-prettier eslint-plugin-prettier @ty
       }
     ],
     "simple-import-sort/exports": "error",
-    "import/newline-after-import": "error"
+    "import/newline-after-import": "error",
+    "unused-imports/no-unused-imports": "error"
   }
 }
 ```

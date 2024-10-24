@@ -45,6 +45,7 @@ module.exports = {
     node: true,
     jest: true,
   },
+  ignorePatterns: [".eslintrc.js"],
   rules: {
     "prettier/prettier": "error",
     "no-unused-vars": "off",
@@ -120,7 +121,7 @@ package-lock.json
 ```json title=".lintstagedrc.json"
 {
   "*": ["prettier --write .", "git add ."],
-  "src/**/*.ts": ["eslint --fix --max-warnings=0", "git add ."]
+  "{src,apps,libs,test}/**/*.ts": ["eslint --fix --max-warnings=0", "git add ."]
 }
 ```
 
@@ -132,7 +133,7 @@ package-lock.json
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "lint": "eslint \"src/**/*.ts\" --fix",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "format": "prettier --write .",
     "ts-check": "tsc --noEmit",
     "prepare": "husky install"

@@ -41,8 +41,6 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = tseslint.config(
-  eslint.configs.recommended,
-  eslintPluginPrettierRecommended,
   { ignores: [".next/**/*", "node_modules/**/*"] },
   {
     files: ["src/**/*.{ts,tsx}", "eslint.config.mjs"],
@@ -51,6 +49,8 @@ const eslintConfig = tseslint.config(
       "unused-imports": unusedImports,
     },
     extends: [
+      eslint.configs.recommended,
+      eslintPluginPrettierRecommended,
       ...tsEslintConfigs.recommendedTypeChecked,
       ...tailwind.configs["flat/recommended"],
       ...compat.extends("next/core-web-vitals", "next/typescript"),
@@ -82,10 +82,8 @@ const eslintConfig = tseslint.config(
       },
     },
     rules: {
-      "prettier/prettier": "error",
       "no-unused-vars": "off",
       "no-empty": "off",
-      "no-console": "off",
       "@typescript-eslint/no-unused-vars": [
         "error",
         {
@@ -119,9 +117,14 @@ const eslintConfig = tseslint.config(
   }
   /* Cấu hình thêm ESLint, Plugin cho các file, thư mục khác. Cấu trúc như object bên trên */
 );
-
 export default eslintConfig;
 ```
+
+:::note
+
+- Đôi khi có những thư viện ESLint chưa hỗ trợ cấu hình với Flat Config mà chỉ tương thích với bản cũ (Legacy Config). Do đó, lớp `FlatCompat` được sinh ra và cung cấp cho ta các phương thức như `.extends()`, `.plugins()` để chuyển đổi chúng thành một cấu hình tương thích với Flat Config.
+
+:::
 
 ## File `.prettierrc.json`
 
@@ -150,11 +153,12 @@ export default eslintConfig;
 ## File `.prettierignore`
 
 ```plaintext title=".prettierignore"
-node_modules
-build
-dist
-.next
-.idea
+/node_modules
+/build
+/dist
+/public
+/.next
+/.idea
 package-lock.json
 ```
 

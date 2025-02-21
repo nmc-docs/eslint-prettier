@@ -8,6 +8,19 @@ slug: /
 ## ESLint là gì ?
 
 - ESLint là một công cụ mã nguồn mở dùng để kiểm tra mã JavaScript/TypeScript và báo các lỗi cú pháp, sai sót, vi phạm quy tắc lập trình, hoặc tiềm ẩn các vấn đề khác. Nó cho phép người dùng tùy chỉnh các quy tắc kiểm tra và thực thi chúng trong các quy trình kiểm tra trước khi triển khai mã của họ.
+- Sự khác biệt giữa cấu hình **extends** với **plugins**:
+
+| Đặc điểm          | `extends`                                                       | `plugins`                                                                     |
+| ----------------- | --------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| **Mục đích**      | Kế thừa cấu hình ESLint có sẵn                                  | Đăng ký các plugin để dùng các quy tắc tùy chỉnh                              |
+| **Tác dụng**      | Tự động kích hoạt các quy tắc của cấu hình kế thừa              | Chỉ đăng ký plugin, không tự động kích hoạt quy tắc                           |
+| **Cách dùng**     | `"extends": ["eslint:recommended", "plugin:react/recommended"]` | `"plugins": ["react"]`, sau đó phải khai báo `rules`                          |
+| **Khi nào dùng?** | Khi muốn kế thừa và sử dụng ngay bộ quy tắc có sẵn              | Khi cần thêm quy tắc từ plugin nhưng không muốn dùng toàn bộ thiết lập sẵn có |
+
+👉 **Tóm lại:**
+
+- Nếu muốn sử dụng một bộ quy tắc ESLint có sẵn, hãy dùng `extends`.
+- Nếu muốn tự tùy chỉnh quy tắc từ một plugin, hãy dùng `plugins` kết hợp với `rules`.
 
 ## Prettier là gì ?
 

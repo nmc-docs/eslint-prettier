@@ -41,9 +41,21 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = tseslint.config(
-  { ignores: [".next/**/*", "node_modules/**/*"] },
   {
-    files: ["src/**/*.{ts,tsx}", "eslint.config.mjs"],
+    ignores: [
+      ".next/**/*",
+      ".husky/**/*",
+      "dist/**/*.ts",
+      "dist/**",
+      "node_modules/**/*",
+      "**/*.mjs",
+      "**/*.js",
+      "**/*.cjs",
+      "eslint.config.mjs",
+    ],
+  },
+  {
+    files: ["src/**/*.{ts,tsx}"],
     plugins: {
       "simple-import-sort": simpleImportSort,
       "unused-imports": unusedImports,
